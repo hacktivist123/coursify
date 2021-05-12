@@ -11,23 +11,29 @@ generator client {
 }
 
 model User {
-  id      Int         @id @default(autoincrement())
-  email   String     @unique
-  courses Course[]
-  createdAt DateTime  @default(now())
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  courses   Course[]
+  createdAt DateTime @default(now())
 }
+
 model Course {
   id        Int      @id @default(autoincrement())
   title     String   @unique
   createdAt DateTime @default(now())
+  price     Int
+  slug      String   @unique
   lessons   Lesson[]
   users     User[]
+  thumbnail String
 }
 
 model Lesson {
   id        Int      @id @default(autoincrement())
   title     String   @unique
   courseId  Int
+  slug      String   @unique
   createdAt DateTime @default(now())
   course    Course   @relation(fields: [courseId], references: [id])
+  videoUrl  String
 }
