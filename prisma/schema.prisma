@@ -10,11 +10,18 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model User {
+  id      Int         @id @default(autoincrement())
+  email   String     @unique
+  courses Course[]
+  createdAt DateTime  @default(now())
+}
 model Course {
   id        Int      @id @default(autoincrement())
   title     String   @unique
   createdAt DateTime @default(now())
   lessons   Lesson[]
+  users     User[]
 }
 
 model Lesson {
