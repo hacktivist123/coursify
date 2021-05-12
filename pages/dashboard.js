@@ -4,4 +4,6 @@ const Dashboard = withPageAuthRequired(({ user }) => {
   return <p>Welcome {user.name}</p>
 })
 
+export const getServerSideProps = withPageAuthRequired()
+
 export default Dashboard
