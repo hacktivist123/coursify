@@ -1,22 +1,22 @@
-import axios from 'axios'
+import { getCourses } from '../utils/db'
 
-const baseURL = 'http"//localhost:3000/api/get-courses'
-const Homepage = ({ courses }) => {
+const HomePage = ({ courses }) => {
   return (
     <div>
-      <h1>Courisfy</h1>
+      <h1>Courses</h1>
       <pre>{JSON.stringify(courses, null, 2)}</pre>
     </div>
   )
 }
 
 export const getStaticProps = async () => {
-  const { data } = await axios.get(baseURL)
+  const data = await getCourses()
+
   return {
     props: {
-      courses: data,
+      courses: JSON.parse(JSON.stringify(data)),
     },
   }
 }
 
-export default Homepage
+export default HomePage
