@@ -1,3 +1,22 @@
-const HomePage = () => <h1>Welcome to Coursify</h1>
+import axios from 'axios'
 
-export default HomePage
+const baseURL = 'http"//localhost:3000/api/get-courses'
+const Homepage = ({ courses }) => {
+  return (
+    <div>
+      <h1>Courisfy</h1>
+      <pre>{JSON.stringify(courses, null, 2)}</pre>
+    </div>
+  )
+}
+
+export const getStaticProps = async () => {
+  const { data } = await axios.get(baseURL)
+  return {
+    props: {
+      courses: data,
+    },
+  }
+}
+
+export default Homepage

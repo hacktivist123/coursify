@@ -14,7 +14,6 @@ model Course {
   id        Int      @id @default(autoincrement())
   title     String   @unique
   createdAt DateTime @default(now())
-  thumbnail String   @unique
   lessons   Lesson[]
 }
 
