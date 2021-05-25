@@ -14,6 +14,7 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   courses   Course[]
+  stripeId  String   @unique
   createdAt DateTime @default(now())
 }
 
